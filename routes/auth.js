@@ -7,12 +7,11 @@
 
 const express = require('express');
 const router = express.Router();
-const { login, getMe, logout, rescueManager } = require('../controllers/authController');
+const { login, getMe, logout } = require('../controllers/authController');
 const { protect } = require('../middleware/auth');
 
-// Public routes
+// Public route - Staff login
 router.post('/login', login);
-router.get('/rescue', rescueManager); // GET request to trigger reset
 
 // Protected routes - Require authentication
 router.get('/me', protect, getMe);
